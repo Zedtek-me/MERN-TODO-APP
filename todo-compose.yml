@@ -1,0 +1,34 @@
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: todo-app-image
+    container_name: todo_app
+    volumes:
+      - .:/app
+      - ./.env:/app/.env
+    env_file: .env
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+    networks:
+      - todo_network
+    depends_on:
+      - todo_db
+
+  # mongodb
+  todo_db:
+    image: mongodb
+    container_name: todo_db
+    networks:
+      - todo_network
+    volumes:
+      - db_data:/var/lib/data
+    restart: unless-stopped
+
+networks:
+  todo_network:
+volumes:
+  db_data:
