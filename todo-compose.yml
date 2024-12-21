@@ -20,13 +20,17 @@ services:
 
   # mongodb
   todo_db:
-    image: mongodb
+    image: mongo
     container_name: todo_db
     networks:
       - todo_network
     volumes:
       - db_data:/var/lib/data
     restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: todo_app
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: todo_app
 
 networks:
   todo_network:
