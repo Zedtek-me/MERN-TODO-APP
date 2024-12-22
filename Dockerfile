@@ -1,6 +1,7 @@
 FROM node
 WORKDIR /app
-RUN apt-get update -y
+COPY start_api.sh  ./start_api.sh
+RUN chmod +x ./start_api.sh
 COPY . /app/
 RUN npm install
-ENTRYPOINT [ "sh", "-c", "start_api.sh" ]
+ENTRYPOINT [ "sh", "/app/start_api.sh" ]

@@ -38,4 +38,4 @@ class UserUtil{
     }
 }
 
-module.exports = UserUtils
+module.exports = UserUtil
