@@ -5,15 +5,12 @@ const {
 } = require("../utils/response_utils")
 
 
-class CrudController{
-}
-
 class TodoController{
     static async getAllTodos(req, res, next){
         /**
          * returns all todos in the system
          * */ 
-        let todos = await TodoUtil.getAllTodos(req.query)
+        let todos = await TodoUtil.getTodos(req.query)
         console.log("all todos from the controller file: ", todos)
         return new SuccessResponse("All todo retrieved successfully!", 200, todos).send(req, res)
     }
@@ -32,4 +29,4 @@ class TodoController{
     }
 }
 
-module.exports = CrudController
+module.exports = TodoController
