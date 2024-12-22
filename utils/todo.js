@@ -46,7 +46,7 @@ module.exports = class TodoUtil{
     }
 
     static async deleteTodo(id){
-        let todoToDelete = await Todo.deleteMany({id})
+        let todoToDelete = await Todo.deleteOne({id})
         console.log("deleted todo: ", todoToDelete)
         return todoToDelete
     }
