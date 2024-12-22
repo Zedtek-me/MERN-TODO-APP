@@ -5,9 +5,6 @@ const {
 } = require("../utils/response_utils")
 
 
-class CrudController{
-}
-
 class TodoController{
     static async getAllTodos(req, res, next){
         /**
