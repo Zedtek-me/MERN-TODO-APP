@@ -27,6 +27,16 @@ class TodoController{
         let todo = await TodoUtil.createTodo(req.body)
         return new SuccessResponse("Todo created successfully!", 201, todo).send(req, res)
     }
+
+    static async updateTodo(req, res, next){
+        let todo = await TodoUtil.updateTodo(req.params.id, req.body)
+        return new SuccessResponse("Todo updated successfully!", 200, todo).send(req, res)
+    }
+
+    static async deleteTodo(req, res, next){
+        let todo = await TodoUtil.deleteTodo(req.params.id)
+        return new SuccessResponse("Todo deleted successfully!", 200, todo).send(req, res)
+    }
 }
 
 module.exports = TodoController
