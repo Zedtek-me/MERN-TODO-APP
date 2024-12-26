@@ -6,7 +6,7 @@ const {
 
 
 class TodoController{
-    static async getAllTodos(req, res, next){
+    static async getAllTodos(req, res){
         /**
          * returns all todos in the system
          * */ 
@@ -15,7 +15,7 @@ class TodoController{
         return new SuccessResponse("All todo retrieved successfully!", 200, todos).send(req, res)
     }
 
-    static async getSingleTodo(req, res, next){
+    static async getSingleTodo(req, res){
         let todo = await TodoUtil.getTodo(req.params.id)
         if(!todo){
             return new ErrorResponse("Todo not found!", 404).send(req, res)
@@ -23,17 +23,17 @@ class TodoController{
         return new SuccessResponse("Todo retrieved successfully!", 200, todo).send(req, res)
     }
 
-    static async createTodo(req, res, next){
+    static async createTodo(req, res){
         let todo = await TodoUtil.createTodo(req.body)
         return new SuccessResponse("Todo created successfully!", 201, todo).send(req, res)
     }
 
-    static async updateTodo(req, res, next){
+    static async updateTodo(req, res){
         let todo = await TodoUtil.updateTodo(req.params.id, req.body)
         return new SuccessResponse("Todo updated successfully!", 200, todo).send(req, res)
     }
 
-    static async deleteTodo(req, res, next){
+    static async deleteTodo(req, res){
         let todo = await TodoUtil.deleteTodo(req.params.id)
         return new SuccessResponse("Todo deleted successfully!", 200, todo).send(req, res)
     }
